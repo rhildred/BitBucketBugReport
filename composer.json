@@ -1,0 +1,8 @@
+{
+    "name": "rhildred/BitBucketBugReport",
+    "autoload": {
+        "psr-0": {
+            "": ""
+        }
+    }
+}
