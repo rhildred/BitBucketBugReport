@@ -58,7 +58,7 @@ class Bitbucket{
             $response = json_decode($response);
             if(isset($response->local_id) && intval($response->local_id) > 0 ){
                 $bugurl = "https://bitbucket.org/". $bbRepo . "/issue/" . $response->local_id;
-                return( array('issueid'=>$response->local_id, 'issueurl'=>$bugurl, 'result'=>'success') );
+                return( array('issueid'=>$response->local_id, 'issueurl'=>$bugurl, 'result'=>'thank-you for your question') );
             }else{
                 return(FALSE);
             }
