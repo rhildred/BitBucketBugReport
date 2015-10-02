@@ -11,7 +11,7 @@ class Bitbucket{
     static function submitBug($title, $content, $user='Anonymous', $component= "", $image = "", $bbAccount='rhildred', $status='new', $priority='major', $kind='bug'){
         $oCreds = json_decode(file_get_contents(__DIR__ . '/../../../creds/bitbucket.json'));
         $basicAuth= $oCreds->basicAuth;
-        $bbRepo = $oCreds->repo;
+        $bbRepo = $bbAccount . "/" . $component;
         $url = "https://bitbucket.org/api/1.0/repositories/". $bbRepo . "/issues/";
 ;
         $ch = curl_init($url);
@@ -22,12 +22,12 @@ class Bitbucket{
             $user = stripslashes($user);
             $component = stripslashes($component);
             $bbAccount = stripslashes($bbAccount);
-            $bbRepo = stripslashes($bbRepo);
+            $bbRepo = stripslashes($bbAccount) . "/" . stripslashes($component);
         }
 
         $fields = array(
                                 'title' => urlencode($title),
-                                'content' => urlencode($content."\n\nSubmitted By Userid: ".$user. "\n\nUrl: " . $component),
+                                'content' => urlencode($content."\n\nSubmitted By Userid: ". $user),
                                 'status' => urlencode($status),
                                 'priority' => urlencode($priority),
                                 'kind' => urlencode($kind)
