@@ -9,7 +9,7 @@
 class Bitbucket{
     /* Function submitBug - sends the bug to the bitbucket API. Must contain title and content. User name/email is optional.*/
     static function submitBug($title, $content, $user='Anonymous', $component= "", $image = "", $bbAccount='rhildred', $status='new', $priority='major', $kind='bug'){
-        $oCreds = json_decode(file_get_contents(__DIR__ . '/../../../creds/bitbucket.json'));
+        $oCreds = json_decode(file_get_contents(__DIR__ . '/../../../../data/creds/bitbucket.json'));
         $basicAuth= $oCreds->basicAuth;
         $bbRepo = $bbAccount . "/" . $component;
         $url = "https://bitbucket.org/api/1.0/repositories/". $bbRepo . "/issues/";
